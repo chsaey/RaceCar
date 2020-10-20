@@ -30,7 +30,7 @@ public class Car {
     }
 
     public void accelerate() {
-        if (distance < 100) {
+        if (distance <= 100) {
             if (year >= 2015)
                 speed = Math.min(speed + 15, maxSpeed);
             else if (year >= 2010)

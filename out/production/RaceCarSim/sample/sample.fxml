@@ -28,9 +28,7 @@
            </rowConstraints>
        </GridPane>
         <Pane prefHeight="782.0" prefWidth="600.0" style="-fx-background-color: rgba(0,100,100,0.0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-            <children>
-
-            </children></Pane>
+  </Pane>
     </StackPane>
    </center>
    <bottom>
@@ -38,10 +36,12 @@
          <children>
             <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="580.0">
               <buttons>
-                  <Button layoutX="50.0" layoutY="48.0" mnemonicParsing="false" text="Start" fx:id="start" onAction="#startRace"/>
-                  <Button layoutX="30.0" layoutY="48.0" mnemonicParsing="false" prefWidth="174.0" text="speed" fx:id="speedUp" onAction="#speedUp"/>
-                  <Button mnemonicParsing="false" text="Slow down" fx:id="slowDown" onAction="#slowDown" />
-                  <Button layoutX="135.0" layoutY="48.0" mnemonicParsing="false" prefHeight="25.0" text="restart" fx:id="restart" onAction="#restartRace" />
+                  <Button fx:id="start" layoutX="50.0" layoutY="48.0" mnemonicParsing="false" onAction="#startRace" text="Start" />
+                  <Button fx:id="speedUp" layoutX="30.0" layoutY="48.0" mnemonicParsing="false" onAction="#speedUp" prefWidth="174.0" text="Speed up" />
+                  <Button fx:id="slowDown" mnemonicParsing="false" onAction="#slowDown" text="Slow down" />
+                  <Button fx:id="pause" layoutX="135.0" layoutY="48.0" mnemonicParsing="false" onAction="#pause" prefHeight="25.0" text="Pause" />
+                  <Button fx:id="resume" layoutX="457.0" layoutY="48.0" mnemonicParsing="false" onAction="#resume" prefHeight="25.0" text="Resume" />
+                  <Button fx:id="restart" layoutX="486.0" layoutY="48.0" mnemonicParsing="false" onAction="#restartRace" prefHeight="25.0" text="Restart" />
               </buttons>
             </ButtonBar>
          </children>
