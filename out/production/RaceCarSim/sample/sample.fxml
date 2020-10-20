@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <center>
     <StackPane>
        <GridPane gridLinesVisible="true" prefHeight="782.0" prefWidth="600.0" style="-fx-background-color: Grey;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
@@ -38,10 +38,10 @@
          <children>
             <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="580.0">
               <buttons>
-                  <Button layoutX="50.0" layoutY="48.0" mnemonicParsing="false" text="Start" />
-                  <Button layoutX="30.0" layoutY="48.0" mnemonicParsing="false" prefWidth="174.0" text="Speed up" />
-                  <Button mnemonicParsing="false" text="Slow down" />
-                  <Button layoutX="135.0" layoutY="48.0" mnemonicParsing="false" prefHeight="25.0" text="Restart" />
+                  <Button layoutX="50.0" layoutY="48.0" mnemonicParsing="false" text="Start" fx:id="start" onAction="#startRace"/>
+                  <Button layoutX="30.0" layoutY="48.0" mnemonicParsing="false" prefWidth="174.0" text="speed" fx:id="speedUp" onAction="#speedUp"/>
+                  <Button mnemonicParsing="false" text="Slow down" fx:id="slowDown" onAction="#slowDown" />
+                  <Button layoutX="135.0" layoutY="48.0" mnemonicParsing="false" prefHeight="25.0" text="restart" fx:id="restart" onAction="#restartRace" />
               </buttons>
             </ButtonBar>
          </children>
