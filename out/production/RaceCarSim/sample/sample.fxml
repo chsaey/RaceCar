@@ -50,9 +50,12 @@
     <bottom>
         <HBox prefHeight="100.0" prefWidth="500.0" BorderPane.alignment="CENTER">
             <children>
-                <ButtonBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="580.0">
-                    <buttons>
-                        <Button fx:id="start" layoutX="50.0" layoutY="48.0" mnemonicParsing="false" onAction="#startRace" text="Start" />
+               <Rectangle fx:id="rec" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="33.0" layoutX="13.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="34.0" />
+               <Rectangle fx:id="rec1" arcHeight="5.0" arcWidth="5.0" fill="#ff371f" height="34.0" layoutX="10.0" layoutY="66.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+               <Rectangle fx:id="rec2" arcHeight="5.0" arcWidth="5.0" fill="#1fff49" height="37.0" layoutX="10.0" layoutY="117.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+               <Rectangle fx:id="rec3" arcHeight="5.0" arcWidth="5.0" fill="#e8ff1f" height="38.0" layoutX="9.0" layoutY="167.0" stroke="BLACK" strokeType="INSIDE" width="43.0" />
+               <Rectangle fx:id="rec4" arcHeight="5.0" arcWidth="5.0" fill="#ff1fe1" height="37.0" layoutX="8.0" layoutY="225.0" stroke="BLACK" strokeType="INSIDE" width="45.0" />
+            </children></Pane>
 
                         <Button fx:id="speedUp" layoutX="30.0" layoutY="48.0" mnemonicParsing="false" onAction="#speedUp" prefWidth="174.0" text="Speed up" />
                         <Button fx:id="slowDown" mnemonicParsing="false" onAction="#slowDown" text="Slow down" />
