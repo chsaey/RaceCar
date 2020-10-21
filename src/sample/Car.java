@@ -1,6 +1,9 @@
 package sample;
 
 import javafx.scene.paint.Color;
+import org.w3c.dom.css.Rect;
+
+import java.awt.*;
 
 public class Car {
     private Color color;
@@ -10,6 +13,7 @@ public class Car {
     private int speed;
     private int year;
     private int maxSpeed;
+    private Rectangle rect;
 
 
     public Car(Color color, String make, int year, int speed, int maxSpeed, String carNumber) {
