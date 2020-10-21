@@ -39,6 +39,7 @@ public class Car {
         }
     }
 
+
     public double getDistance() {
         return distance;
     }

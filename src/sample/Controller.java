@@ -1,8 +1,15 @@
 package sample;
 
+import javafx.animation.*;
 import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import java.security.Provider;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 class Race extends Thread implements Runnable {
     boolean race = true;
@@ -20,50 +27,69 @@ class Race extends Thread implements Runnable {
     }
 }
 
+
+
+
+
 public class Controller {
-    Race race = new Race();
+    @FXML
+    private Rectangle rec = new Rectangle();
+    TranslateTransition tt;
 
-    public javafx.scene.control.Button start;
-    public javafx.scene.control.Button speedUp;
-    public javafx.scene.control.Button slowDown;
-    public javafx.scene.control.Button restart;
-    public javafx.scene.control.Button pause;
-    public javafx.scene.control.Button resume;
 
-    public void startRace() {
-        race = new Race();
-        race.start();
+
+    @FXML
+    private Button pause;
+
+    @FXML
+    private Button resume;
+
+    @FXML
+    private Button start;
+
+    @FXML
+    private Button speedUp;
+
+    @FXML
+    private Button slowDown;
+
+    @FXML
+    private Button restart;
+
+    @FXML
+    void restartRace(ActionEvent event) {
+        tt.setRate(1.0);
+        tt.playFromStart();
     }
 
-    public void speedUp() {
-        System.out.println("speed");
+    @FXML
+    void slowDown(ActionEvent event) {
+        tt.setRate(tt.getCurrentRate() - 1.0);
     }
 
-    public void slowDown() {
-        System.out.println("slow");
+
+    @FXML
+    void startRace(ActionEvent event) {
+
+        tt = new TranslateTransition(Duration.seconds(20), rec);
+        tt.setFromX(0f);
+        tt.setToX(900f);
+        tt.play();
     }
 
-    public void pause() {
-        System.out.println("pause");
-        try{
-            race.wait();
-        } catch (Exception e){
-            System.out.println("lol thread broke on pause");
-        }
+    @FXML
+    void speedUp(ActionEvent event) {
+
+        tt.setRate(tt.getCurrentRate() + 1.0);
     }
 
-    public void resume() {
-        System.out.println("resume");
-        try{
-            race.notify();
-        }
-        catch (Exception e){
-            System.out.println("Lol thread broke on resume");
-        }
+    @FXML
+    void pause(ActionEvent actionEvent) {
+        tt.pause();
     }
 
-    public void restartRace() {
-        race.race = false;
+    @FXML
+    void resume(ActionEvent actionEvent) {
+        tt.play();
     }
-
 }
