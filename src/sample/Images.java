@@ -16,7 +16,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Images<WarstrikeButton> {
+public class Images<CarImages> {
 
     private static final int HEIGHT = 1000;
     private static final int WIDTH = 1366;
@@ -27,7 +27,7 @@ public class Images<WarstrikeButton> {
     private final static int GAME_BUTTON_START_X = 100;
     private final static int GAME_BUTTON_START_Y = 150;
 
-    List<WarstrikeButton> gameButtons;
+    List<CarImages> gameButtons;
 
     public Images()
     {
@@ -36,7 +36,6 @@ public class Images<WarstrikeButton> {
 
         //Initialize the game buttons
         gameButtons = new ArrayList<>();
-        createButtons();
 
         //Create background
         createBackground();
@@ -55,32 +54,14 @@ public class Images<WarstrikeButton> {
         return mainStage;
     }
 
-    private void addGameButton(WarstrikeButton button)
+    private void addGameButton(CarImages button)
     {
 
         gameButtons.add(button);
         mainPane.getChildren().add((Node) button);
     }
 
-    private void createButtons()
-    {
 
-        createResumeButton();
-        createPauseButton();
-
-    }
-
-    private void createResumeButton()
-    {
-        WarstrikeButton resumeButton = new WarstrikeButton("Resume");
-        addGameButton(resumeButton);
-    }
-
-    private void createPauseButton()
-    {
-        WarstrikeButton pauseButton = new WarstrikeButton("Pause");
-        addGameButton(pauseButton);
-    }
 
     private void createBackground()
     {
