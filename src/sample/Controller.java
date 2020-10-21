@@ -4,6 +4,8 @@ import javafx.animation.*;
 import javafx.concurrent.Service;
 import javafx.fxml.FXML;
 import java.security.Provider;
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -52,6 +54,8 @@ public class Controller {
     TranslateTransition tt2;
     TranslateTransition tt3;
     TranslateTransition tt4;
+
+    static ArrayList<String> store = new ArrayList<>();
 
 
 
@@ -104,23 +108,95 @@ public class Controller {
         tt.setFromX(0f);
         tt.setToX(900f);
         tt.play();
+        tt.setOnFinished(e -> {
+            store.add(rec.toString());
+            if (store.size() == 1) {
+                System.out.println(store.get(0));
+            } else if (store.size() == 2) {
+                System.out.println(store.get(1));
+            } else if (store.size() == 3) {
+                System.out.println(store.get(2));
+            } else if (store.size() == 4) {
+                System.out.println(store.get(3));
+            } else if (store.size() == 5) {
+                System.out.println(store.get(4));
+            }
+        });
         tt1 = new TranslateTransition(Duration.seconds(10), rec1);
         tt1.setFromX(0f);
         tt1.setToX(900f);
         tt1.play();
+        tt1.setOnFinished(e -> {
+            store.add(rec1.toString());
+            if (store.size() == 1) {
+                System.out.println(store.get(0));
+            } else if (store.size() == 2) {
+                System.out.println(store.get(1));
+            } else if (store.size() == 3) {
+                System.out.println(store.get(2));
+            } else if (store.size() == 4) {
+                System.out.println(store.get(3));
+            } else if (store.size() == 5) {
+                System.out.println(store.get(4));
+            }
+
+        });
         tt2 = new TranslateTransition(Duration.seconds(15), rec2);
         tt2.setFromX(0f);
         tt2.setToX(900f);
         tt2.play();
+        tt2.setOnFinished(e -> {
+            store.add(rec2.toString());
+            if (store.size() == 1) {
+                System.out.println(store.get(0));
+            } else if (store.size() == 2) {
+                System.out.println(store.get(1));
+            } else if (store.size() == 3) {
+                System.out.println(store.get(2));
+            } else if (store.size() == 4) {
+                System.out.println(store.get(3));
+            } else if (store.size() == 5) {
+                System.out.println(store.get(4));
+            }
+        });
         tt3 = new TranslateTransition(Duration.seconds(12), rec3);
         tt3.setFromX(0f);
         tt3.setToX(900f);
         tt3.play();
+        tt3.setOnFinished(e -> {
+            store.add(rec3.toString());
+            if (store.size() == 1) {
+                System.out.println(store.get(0));
+            } else if (store.size() == 2) {
+                System.out.println(store.get(1));
+            } else if (store.size() == 3) {
+                System.out.println(store.get(2));
+            } else if (store.size() == 4) {
+                System.out.println(store.get(3));
+            } else if (store.size() == 5) {
+                System.out.println(store.get(4));
+            }
+        });
         tt4 = new TranslateTransition(Duration.seconds(17), rec4);
         tt4.setFromX(0f);
         tt4.setToX(900f);
         tt4.play();
+        tt4.setOnFinished(e -> {
+            store.add(rec4.toString());
+            if (store.size() == 1) {
+                System.out.println(store.get(0));
+            } else if (store.size() == 2) {
+                System.out.println(store.get(1));
+            } else if (store.size() == 3) {
+                System.out.println(store.get(2));
+            } else if (store.size() == 4) {
+                System.out.println(store.get(3));
+            } else if (store.size() == 5) {
+                System.out.println(store.get(4));
+            }
+        });
     }
+
 
     @FXML
     void speedUp(ActionEvent event) {
