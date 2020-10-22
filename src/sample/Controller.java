@@ -1,229 +1,155 @@
 package sample;
 
 import javafx.animation.*;
-import javafx.concurrent.Service;
 import javafx.fxml.FXML;
-import java.security.Provider;
+
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-//class Race extends Thread implements Runnable {
-//    boolean race = true;
-//    boolean pause = false;
-//    int x = 1;
-//    public void run() {
-//        try {
-//            while (race) {
-//                System.out.println(x);
-//                x++;
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Exception is caught");
-//        }
-//    }
-//}
-
-
-
-
-
 public class Controller {
     @FXML
+    private Button pause;
+    @FXML
+    private Button resume;
+    @FXML
+    private Button start;
+    @FXML
+    private Button speedUp;
+    @FXML
+    private Button slowDown;
+    @FXML
+    private Button restart;
+    @FXML
     private Rectangle rec;
-
     @FXML
     private Rectangle rec1;
-
     @FXML
     private Rectangle rec2;
-
     @FXML
     private Rectangle rec3;
-
     @FXML
     private Rectangle rec4;
 
-    TranslateTransition tt;
-    TranslateTransition tt1;
-    TranslateTransition tt2;
-    TranslateTransition tt3;
-    TranslateTransition tt4;
+    Car car1;
+    Car car2;
+    Car car3;
+    Car car4;
+    Car car5;
 
     static ArrayList<String> store = new ArrayList<>();
-
-
-
-    @FXML
-    private Button pause;
-
-    @FXML
-    private Button resume;
-
-    @FXML
-    private Button start;
-
-    @FXML
-    private Button speedUp;
-
-    @FXML
-    private Button slowDown;
-
-    @FXML
-    private Button restart;
+    double pauseTimer = 0;
+    double pausedTime = 0;
+    double startTime = 0;
+    boolean started = false;
+    boolean isPaused = false;
 
     @FXML
     void restartRace(ActionEvent event) {
-        tt.setRate(1.0);
-        tt.playFromStart();
-        tt1.setRate(1.0);
-        tt1.playFromStart();
-        tt2.setRate(1.0);
-        tt2.playFromStart();
-        tt3.setRate(1.0);
-        tt3.playFromStart();
-        tt4.setRate(1.0);
-        tt4.playFromStart();
+        startTime=System.nanoTime();
+        car1.restart();
+        car2.restart();
+        car3.restart();
+        car4.restart();
+        car5.restart();
+        pauseTimer = 0;
+        pausedTime = 0;
     }
 
     @FXML
     void slowDown(ActionEvent event) {
-        tt.setRate(tt.getCurrentRate() - 1.0);
-        tt1.setRate(tt1.getCurrentRate() - 1.0);
-        tt2.setRate(tt2.getCurrentRate() - 1.0);
-        tt3.setRate(tt3.getCurrentRate() - 1.0);
-        tt4.setRate(tt4.getCurrentRate() - 1.0);
+        car1.slowDown();
+        car2.slowDown();
+        car3.slowDown();
+        car4.slowDown();
+        car5.slowDown();
     }
-
 
     @FXML
     void startRace(ActionEvent event) {
+        if (!started) {
+            started = true;
+            startTime = System.nanoTime();
 
-        tt = new TranslateTransition(Duration.seconds(20), rec);
-        tt.setFromX(0f);
-        tt.setToX(900f);
-        tt.play();
-        tt.setOnFinished(e -> {
-            store.add(rec.toString());
-            if (store.size() == 1) {
-                System.out.println(store.get(0));
-            } else if (store.size() == 2) {
-                System.out.println(store.get(1));
-            } else if (store.size() == 3) {
-                System.out.println(store.get(2));
-            } else if (store.size() == 4) {
-                System.out.println(store.get(3));
-            } else if (store.size() == 5) {
-                System.out.println(store.get(4));
-            }
-        });
-        tt1 = new TranslateTransition(Duration.seconds(10), rec1);
-        tt1.setFromX(0f);
-        tt1.setToX(900f);
-        tt1.play();
-        tt1.setOnFinished(e -> {
-            store.add(rec1.toString());
-            if (store.size() == 1) {
-                System.out.println(store.get(0));
-            } else if (store.size() == 2) {
-                System.out.println(store.get(1));
-            } else if (store.size() == 3) {
-                System.out.println(store.get(2));
-            } else if (store.size() == 4) {
-                System.out.println(store.get(3));
-            } else if (store.size() == 5) {
-                System.out.println(store.get(4));
-            }
+            car1 = new Car(rec, "Mazda", 2018, 9, "1");
+            car1.play();
+            car1.getT().setOnFinished(e -> {
+                store.add(rec.toString());
+                System.out.println(store.get(store.size() - 1) + "Finished in " + calcTime() + " seconds");
+            });
 
-        });
-        tt2 = new TranslateTransition(Duration.seconds(15), rec2);
-        tt2.setFromX(0f);
-        tt2.setToX(900f);
-        tt2.play();
-        tt2.setOnFinished(e -> {
-            store.add(rec2.toString());
-            if (store.size() == 1) {
-                System.out.println(store.get(0));
-            } else if (store.size() == 2) {
-                System.out.println(store.get(1));
-            } else if (store.size() == 3) {
-                System.out.println(store.get(2));
-            } else if (store.size() == 4) {
-                System.out.println(store.get(3));
-            } else if (store.size() == 5) {
-                System.out.println(store.get(4));
-            }
-        });
-        tt3 = new TranslateTransition(Duration.seconds(12), rec3);
-        tt3.setFromX(0f);
-        tt3.setToX(900f);
-        tt3.play();
-        tt3.setOnFinished(e -> {
-            store.add(rec3.toString());
-            if (store.size() == 1) {
-                System.out.println(store.get(0));
-            } else if (store.size() == 2) {
-                System.out.println(store.get(1));
-            } else if (store.size() == 3) {
-                System.out.println(store.get(2));
-            } else if (store.size() == 4) {
-                System.out.println(store.get(3));
-            } else if (store.size() == 5) {
-                System.out.println(store.get(4));
-            }
-        });
-        tt4 = new TranslateTransition(Duration.seconds(17), rec4);
-        tt4.setFromX(0f);
-        tt4.setToX(900f);
-        tt4.play();
-        tt4.setOnFinished(e -> {
-            store.add(rec4.toString());
-            if (store.size() == 1) {
-                System.out.println(store.get(0));
-            } else if (store.size() == 2) {
-                System.out.println(store.get(1));
-            } else if (store.size() == 3) {
-                System.out.println(store.get(2));
-            } else if (store.size() == 4) {
-                System.out.println(store.get(3));
-            } else if (store.size() == 5) {
-                System.out.println(store.get(4));
-            }
-        });
+            car2 = new Car(rec1, "BMW", 2020, 10, "2");
+            car2.play();
+            car2.getT().setOnFinished(e -> {
+                store.add(rec1.toString());
+                System.out.println(store.get(store.size() - 1) + "Finished in " + calcTime() + " seconds");
+            });
+
+            car3 = new Car(rec2, "Toyota", 2010, 12, "3");
+            car3.play();
+            car3.getT().setOnFinished(e -> {
+                store.add(rec2.toString());
+                System.out.println(store.get(store.size() - 1) + "Finished in " + calcTime() + " seconds");
+            });
+
+            car4 = new Car(rec3, "Volvo", 2005, 8, "4");
+            car4.play();
+            car4.getT().setOnFinished(e -> {
+                store.add(rec3.toString());
+                System.out.println(store.get(store.size() - 1) + "Finished in " + calcTime() + " seconds");
+
+            });
+            car5 = new Car(rec4, "Ferrari", 2020, 15, "5");
+            car5.play();
+            car5.getT().setOnFinished(e -> {
+                store.add(rec4.toString());
+                System.out.println(store.get(store.size() - 1) + "Finished in " + calcTime() + " seconds");
+            });
+        }
     }
 
 
     @FXML
     void speedUp(ActionEvent event) {
-
-        tt.setRate(tt.getCurrentRate() + 1.0);
-        tt1.setRate(tt1.getCurrentRate() + 1.0);
-        tt2.setRate(tt2.getCurrentRate() + 1.0);
-        tt3.setRate(tt3.getCurrentRate() + 1.0);
-        tt4.setRate(tt4.getCurrentRate() + 1.0);
-
+        if (!isPaused) {
+            car1.speedUp();
+            car2.speedUp();
+            car3.speedUp();
+            car4.speedUp();
+            car5.speedUp();
+        }
     }
 
     @FXML
     void pause(ActionEvent actionEvent) {
-        tt.pause();
-        tt1.pause();
-        tt2.pause();
-        tt3.pause();
-        tt4.pause();
+        if (!isPaused) {
+            isPaused = true;
+            car1.pause();
+            car2.pause();
+            car3.pause();
+            car4.pause();
+            car5.pause();
+            pauseTimer = System.nanoTime();
+        }
     }
 
     @FXML
     void resume(ActionEvent actionEvent) {
-        tt.play();
-        tt1.play();
-        tt2.play();
-        tt3.play();
-        tt4.play();
+        if (isPaused) {
+            isPaused = false;
+            car1.resume();
+            car2.resume();
+            car3.resume();
+            car4.resume();
+            car5.resume();
+            pausedTime += System.nanoTime() - pauseTimer;
+        }
+    }
+
+    double calcTime() {
+        return (System.nanoTime() - startTime - pausedTime) / 1_000_000_000;
     }
 }
