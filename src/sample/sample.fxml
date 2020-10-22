@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <center>
@@ -43,6 +36,12 @@
                     <Rectangle fx:id="rec2" arcHeight="5.0" arcWidth="5.0" fill="#1fff49" height="37.0" layoutX="10.0" layoutY="117.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
                     <Rectangle fx:id="rec3" arcHeight="5.0" arcWidth="5.0" fill="#e8ff1f" height="38.0" layoutX="9.0" layoutY="167.0" stroke="BLACK" strokeType="INSIDE" width="43.0" />
                     <Rectangle fx:id="rec4" arcHeight="5.0" arcWidth="5.0" fill="#ff1fe1" height="37.0" layoutX="8.0" layoutY="225.0" stroke="BLACK" strokeType="INSIDE" width="45.0" />
+               <ImageView fitHeight="37.0" fitWidth="57.0" layoutX="2.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../racecar_images/tesla.jpg" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="55.0" fitWidth="58.0" layoutX="2.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" />
                 </children></Pane>
         </StackPane>
     </center>
@@ -59,6 +58,11 @@
                         <Button fx:id="restart" layoutX="486.0" layoutY="48.0" mnemonicParsing="false" onAction="#restartRace" prefHeight="25.0" text="Restart" />
                     </buttons>
                 </ButtonBar>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+              <buttons>
+                <Button mnemonicParsing="false" text="Button" />
+              </buttons>
+            </ButtonBar>
             </children>
         </HBox>
     </bottom>
