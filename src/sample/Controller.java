@@ -52,7 +52,6 @@ public class Controller {
     boolean started = false;
     boolean isPaused = false;
 
-    Image im = new Image("/sample/DSC00300.jpg", false);
     @FXML
     void restartRace(ActionEvent event) {
         store.removeAll(store);
@@ -81,7 +80,23 @@ public class Controller {
 
     @FXML
     void startRace(ActionEvent event) {
-        rec.setFill(new ImagePattern(im));
+
+        //Users/Dhruvil/Desktop/RaceCar/racecar_images
+        Image image1 = new Image("/sample/racecar_images/fiat.png", false);
+        rec.setFill(new ImagePattern(image1));
+
+        Image image2 = new Image("/sample/racecar_images/mustang.png", false);
+        rec1.setFill(new ImagePattern(image2));
+
+        Image image3 = new Image("/sample/racecar_images/sportscar1.png", false);
+        rec2.setFill(new ImagePattern(image3));
+
+        Image image4 = new Image("/sample/racecar_images/sportscar2.jpg", false);
+        rec3.setFill(new ImagePattern(image4));
+
+        Image image5 = new Image("/sample/racecar_images/tesla.jpg", false);
+        rec4.setFill(new ImagePattern(image5));
+
 
         System.out.println("\n" +  "+----------------------------------------------------+");
         System.out.println("+-----------------R A N K I N G----------------------+");
