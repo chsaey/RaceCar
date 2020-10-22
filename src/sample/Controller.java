@@ -3,12 +3,17 @@ package sample;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+
+
 
 public class Controller {
     @FXML
@@ -47,6 +52,7 @@ public class Controller {
     boolean started = false;
     boolean isPaused = false;
 
+    Image im = new Image("/sample/DSC00300.jpg", false);
     @FXML
     void restartRace(ActionEvent event) {
         store.removeAll(store);
@@ -75,6 +81,8 @@ public class Controller {
 
     @FXML
     void startRace(ActionEvent event) {
+        rec.setFill(new ImagePattern(im));
+
         System.out.println("\n" +  "+----------------------------------------------------+");
         System.out.println("+-----------------R A N K I N G----------------------+");
         System.out.println("+----------------------------------------------------+\n");
