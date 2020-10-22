@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
@@ -75,6 +77,23 @@ public class Controller {
 
     @FXML
     void startRace(ActionEvent event) {
+
+        //Users/Dhruvil/Desktop/RaceCar/racecar_images
+        Image image1 = new Image("/sample/racecar_images/fiat.png", false);
+        rec.setFill(new ImagePattern(image1));
+
+        Image image2 = new Image("/sample/racecar_images/mustang.png", false);
+        rec1.setFill(new ImagePattern(image2));
+
+        Image image3 = new Image("/sample/racecar_images/sportscar1.png", false);
+        rec2.setFill(new ImagePattern(image3));
+
+        Image image4 = new Image("/sample/racecar_images/sportscar2.jpg", false);
+        rec3.setFill(new ImagePattern(image4));
+
+        Image image5 = new Image("/sample/racecar_images/tesla.jpg", false);
+        rec4.setFill(new ImagePattern(image5));
+
         System.out.println("\n" +  "+----------------------------------------------------+");
         System.out.println("+-----------------R A N K I N G----------------------+");
         System.out.println("+----------------------------------------------------+\n");
