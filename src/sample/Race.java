@@ -27,7 +27,7 @@ class Race extends Thread implements Runnable {
     public void run() {
         Random behavior = new Random();
         try {
-            while (car.getT().getStatus() != Animation.Status.STOPPED) {
+            while (car.getStatus() != Animation.Status.STOPPED) {
                 Thread.sleep(500);
                 if (!paused) {
                     int x = behavior.nextInt(9) + 1;
@@ -37,7 +37,6 @@ class Race extends Thread implements Runnable {
                         car.brake();
                     }
                 }
-
             }
             System.out.println("thread stopped");
 

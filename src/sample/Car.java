@@ -18,7 +18,7 @@ public class Car {
     private int maxSpeed;
     private TranslateTransition t;
     private Rectangle rectangle;
-    Race lane;
+    private Race lane;
 
 
     public Car(Rectangle rec, String make, int year, int maxSpeed, String carNumber) {
@@ -42,7 +42,6 @@ public class Car {
     public void pause() {
         lane.togglePause();
         t.pause();
-
     }
 
     public void resume() {
