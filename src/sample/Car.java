@@ -47,7 +47,6 @@ public class Car {
     public void resume() {
         t.play();
         lane.togglePause();
-
     }
 
     public void restart() {
