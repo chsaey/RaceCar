@@ -49,6 +49,11 @@ public class Controller {
 
     @FXML
     void restartRace(ActionEvent event) {
+        store.removeAll(store);
+        System.out.println("\n" +  "+----------------------------------------------------+");
+        System.out.println("+-----------------R A N K I N G----------------------+");
+        System.out.println("+----------------------------------------------------+\n");
+
         startTime=System.nanoTime();
         car1.restart();
         car2.restart();
@@ -70,6 +75,9 @@ public class Controller {
 
     @FXML
     void startRace(ActionEvent event) {
+        System.out.println("\n" +  "+----------------------------------------------------+");
+        System.out.println("+-----------------R A N K I N G----------------------+");
+        System.out.println("+----------------------------------------------------+\n");
         if (!started) {
             started = true;
             startTime = System.nanoTime();
@@ -77,36 +85,85 @@ public class Controller {
             car1 = new Car(rec, "Mazda", 2018, 9, "1");
             car1.play();
             car1.getT().setOnFinished(e -> {
-                store.add(rec.toString());
-                System.out.println(store.get(store.size() - 1) + "Finished in " + calcTime() + " seconds");
+                store.add(car1.getMake());
+                if (store.size() == 1) {
+                    System.out.println("1st: " + store.get(0) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 2) {
+                    System.out.println("2nd: " + store.get(1) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 3) {
+                    System.out.println("3rd: " + store.get(2) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 4) {
+                    System.out.println("4th: " + store.get(3) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 5) {
+                    System.out.println("5th: " + store.get(4) + " Finished in " + calcTime() + " seconds");
+                }
             });
 
             car2 = new Car(rec1, "BMW", 2020, 10, "2");
             car2.play();
             car2.getT().setOnFinished(e -> {
-                store.add(rec1.toString());
-                System.out.println(store.get(store.size() - 1) + "Finished in " + calcTime() + " seconds");
+                store.add(car2.getMake());
+                if (store.size() == 1) {
+                    System.out.println("1st: " + store.get(0) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 2) {
+                    System.out.println("2nd: " + store.get(1) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 3) {
+                    System.out.println("3rd: " + store.get(2) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 4) {
+                    System.out.println("4th: " + store.get(3) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 5) {
+                    System.out.println("5th: " + store.get(4) + " Finished in " + calcTime() + " seconds");
+                }
             });
 
             car3 = new Car(rec2, "Toyota", 2010, 12, "3");
             car3.play();
             car3.getT().setOnFinished(e -> {
-                store.add(rec2.toString());
-                System.out.println(store.get(store.size() - 1) + "Finished in " + calcTime() + " seconds");
+                store.add(car3.getMake());
+                if (store.size() == 1) {
+                    System.out.println("1st: " + store.get(0) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 2) {
+                    System.out.println("2nd: " + store.get(1) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 3) {
+                    System.out.println("3rd: " + store.get(2) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 4) {
+                    System.out.println("4th: " + store.get(3) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 5) {
+                    System.out.println("5th: " + store.get(4) + " Finished in " + calcTime() + " seconds");
+                }
             });
 
             car4 = new Car(rec3, "Volvo", 2005, 8, "4");
             car4.play();
             car4.getT().setOnFinished(e -> {
-                store.add(rec3.toString());
-                System.out.println(store.get(store.size() - 1) + "Finished in " + calcTime() + " seconds");
-
+                store.add(car4.getMake());
+                if (store.size() == 1) {
+                    System.out.println("1st: " + store.get(0) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 2) {
+                    System.out.println("2nd: " + store.get(1) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 3) {
+                    System.out.println("3rd: " + store.get(2) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 4) {
+                    System.out.println("4th: " + store.get(3) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 5) {
+                    System.out.println("5th: " + store.get(4) + " Finished in " + calcTime() + " seconds");
+                }
             });
             car5 = new Car(rec4, "Ferrari", 2020, 15, "5");
             car5.play();
             car5.getT().setOnFinished(e -> {
-                store.add(rec4.toString());
-                System.out.println(store.get(store.size() - 1) + "Finished in " + calcTime() + " seconds");
+                store.add(car5.getMake());
+                if (store.size() == 1) {
+                    System.out.println("1st: " + store.get(0) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 2) {
+                    System.out.println("2nd: " + store.get(1) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 3) {
+                    System.out.println("3rd: " + store.get(2) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 4) {
+                    System.out.println("4th: " + store.get(3) + " Finished in " + calcTime() + " seconds");
+                } else if (store.size() == 5) {
+                    System.out.println("5th: " + store.get(4) + " Finished in " + calcTime() + " seconds");
+                }
             });
         }
     }
