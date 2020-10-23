@@ -39,9 +39,10 @@ class Race extends Thread implements Runnable {
                 }
 
             }
-            //System.out.println();
+
 
         } catch (Exception e) {
+            System.out.println("something broke");
 
         }
 

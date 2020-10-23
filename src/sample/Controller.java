@@ -1,21 +1,13 @@
 package sample;
 
-
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-
-
 import java.util.ArrayList;
-
 import javafx.event.ActionEvent;
-
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-
-
 
 
 public class Controller {
@@ -42,30 +34,33 @@ public class Controller {
     @FXML
     private Rectangle rec4;
 
-    static String[] suf = {"st","nd","rd","th","th"};
-
     Car car1;
     Car car2;
     Car car3;
     Car car4;
     Car car5;
 
+    static String[] suf = {"st", "nd", "rd", "th", "th"};
     static ArrayList<String> store = new ArrayList<>();
     double pauseTimer = 0;
     double pausedTime = 0;
     double startTime = 0;
     boolean started = false;
     boolean isPaused = false;
+    String press = "-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%), #9d4024, #d86e3a, radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);";
+    String release = "-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%), #9d4024, #d86e3a, " +
+            "radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); " +
+            "-fx-font-weight: bold; -fx-font-size: 1.1em; -fx-cursor: hand;";
 
 
     @FXML
     void restartRace(ActionEvent event) {
         store.removeAll(store);
-        System.out.println("\n" +  "+----------------------------------------------------+");
+        System.out.println("\n" + "+----------------------------------------------------+");
         System.out.println("+-----------------R A N K I N G----------------------+");
         System.out.println("+----------------------------------------------------+\n");
 
-        startTime=System.nanoTime();
+        startTime = System.nanoTime();
         car1.restart();
         car2.restart();
         car3.restart();
@@ -90,23 +85,33 @@ public class Controller {
         rec.setFill(new ImagePattern(image1));
         Image image2 = new Image("/sample/racecar_images/mustang.png", false);
         rec1.setFill(new ImagePattern(image2));
-
         Image image3 = new Image("/sample/racecar_images/sportscar1.png", false);
         rec2.setFill(new ImagePattern(image3));
-
         Image image4 = new Image("/sample/racecar_images/sportscar2.jpg", false);
         rec3.setFill(new ImagePattern(image4));
-
         Image image5 = new Image("/sample/racecar_images/tesla.jpg", false);
         rec4.setFill(new ImagePattern(image5));
 
 
-        start.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+        start.addEventHandler(MouseEvent.MOUSE_PRESSED, mouseEvent -> start.setStyle(press));
+        start.addEventHandler(MouseEvent.MOUSE_RELEASED, mouseEvent -> start.setStyle(release));
+        pause.addEventHandler(MouseEvent.MOUSE_PRESSED, mouseEvent -> pause.setStyle(press));
+        pause.addEventHandler(MouseEvent.MOUSE_RELEASED, mouseEvent -> pause.setStyle(release));
+        resume.addEventHandler(MouseEvent.MOUSE_PRESSED, mouseEvent -> resume.setStyle(press));
+        resume.addEventHandler(MouseEvent.MOUSE_RELEASED, mouseEvent -> resume.setStyle(release));
+        restart.addEventHandler(MouseEvent.MOUSE_PRESSED, mouseEvent -> restart.setStyle(press));
+        restart.addEventHandler(MouseEvent.MOUSE_RELEASED, mouseEvent -> restart.setStyle(release));
+        speedUp.addEventHandler(MouseEvent.MOUSE_PRESSED, mouseEvent -> speedUp.setStyle(press));
+        speedUp.addEventHandler(MouseEvent.MOUSE_RELEASED, mouseEvent -> speedUp.setStyle(release));
+        slowDown.addEventHandler(MouseEvent.MOUSE_PRESSED, mouseEvent -> slowDown.setStyle(press));
+        slowDown.addEventHandler(MouseEvent.MOUSE_RELEASED, mouseEvent -> slowDown.setStyle(release));
+        /* start.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 start.setStyle("-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%), #9d4024, #d86e3a, radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);");
             }
         });
+
         start.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -177,19 +182,15 @@ public class Controller {
             public void handle(MouseEvent mouseEvent) {
                 slowDown.setStyle("-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold; -fx-font-size: 1.1em; -fx-cursor: hand;");
             }
-        });
-
+        });*/
     }
-
-
 
     @FXML
     void startRace(ActionEvent event) {
-
-        System.out.println("\n" +  "+----------------------------------------------------+");
-        System.out.println("+-----------------R A N K I N G----------------------+");
-        System.out.println("+----------------------------------------------------+\n");
         if (!started) {
+            System.out.println("\n" + "+----------------------------------------------------+");
+            System.out.println("+-----------------R A N K I N G----------------------+");
+            System.out.println("+----------------------------------------------------+\n");
             started = true;
             startTime = System.nanoTime();
 
@@ -197,38 +198,37 @@ public class Controller {
             car1.play();
             car1.getT().setOnFinished(e -> {
                 store.add(car1.getMake());
-                System.out.println(store.size() + suf[store.size()-1]+": "+ store.get(store.size()-1) + " Finished in " + calcTime() + " seconds");
+                place();
             });
 
             car2 = new Car(rec1, "BMW", 2020, 10, "2");
             car2.play();
             car2.getT().setOnFinished(e -> {
                 store.add(car2.getMake());
-                System.out.println(store.size() + suf[store.size()-1]+": "+ store.get(store.size()-1) + " Finished in " + calcTime() + " seconds");
+                place();
             });
 
             car3 = new Car(rec2, "Toyota", 2010, 12, "3");
             car3.play();
             car3.getT().setOnFinished(e -> {
                 store.add(car3.getMake());
-                System.out.println(store.size() + suf[store.size()-1]+": "+ store.get(store.size()-1) + " Finished in " + calcTime() + " seconds");
+                place();
             });
 
             car4 = new Car(rec3, "Volvo", 2005, 8, "4");
             car4.play();
             car4.getT().setOnFinished(e -> {
                 store.add(car4.getMake());
-                System.out.println(store.size() + suf[store.size()-1]+": "+ store.get(store.size()-1) + " Finished in " + calcTime() + " seconds");
+                place();
             });
             car5 = new Car(rec4, "Ferrari", 2020, 15, "5");
             car5.play();
             car5.getT().setOnFinished(e -> {
                 store.add(car5.getMake());
-                System.out.println(store.size() + suf[store.size()-1]+": "+ store.get(store.size()-1) + " Finished in " + calcTime() + " seconds");
+                place();
             });
         }
     }
-
 
     @FXML
     void speedUp(ActionEvent event) {
@@ -267,7 +267,13 @@ public class Controller {
         }
     }
 
+    void place() {
+        System.out.println(store.size() + suf[store.size() - 1] + ": " + store.get(store.size() - 1) + " Finished in " + calcTime() + " seconds");
+    }
+
     double calcTime() {
         return (System.nanoTime() - startTime - pausedTime) / 1_000_000_000;
     }
+
+
 }

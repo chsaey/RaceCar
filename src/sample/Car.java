@@ -24,7 +24,7 @@ public class Car {
     public Car(Rectangle rec, String make, int year, int maxSpeed, String carNumber) {
         this.t = new TranslateTransition(Duration.seconds(20), rec);
         this.t.setFromX(0f);
-        this.t.setToX(1900f);
+        this.t.setToX(1800f);
         this.rectangle = rec;
         this.make = make;
         this.year = year;
@@ -78,6 +78,7 @@ public class Car {
         else if (t.getStatus() == Animation.Status.RUNNING)
             t.setRate(t.getCurrentRate() - 1.0);
     }
+
 
     public void brake() {
         if(t.getStatus() == Animation.Status.RUNNING){
