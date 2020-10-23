@@ -3,7 +3,7 @@ import javafx.application.Platform;
 import javafx.scene.control.*;
 import java.util.concurrent.*;
 
-//multithread race by lane, will not work correctly as we need to update gui from javafx thread
+//multi thread race by lane, will not work correctly as we need to update gui from javafx thread
 
 class Lane extends Thread implements Runnable {
     boolean play = true;

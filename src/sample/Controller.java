@@ -1,11 +1,11 @@
 package sample;
-
 import javafx.fxml.FXML;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
@@ -34,6 +34,7 @@ public class Controller {
     @FXML
     private Rectangle rec4;
 
+
     Car car1;
     Car car2;
     Car car3;
@@ -56,10 +57,7 @@ public class Controller {
     @FXML
     void restartRace(ActionEvent event) {
         store.removeAll(store);
-        System.out.println("\n" + "+----------------------------------------------------+");
-        System.out.println("+-----------------R A N K I N G----------------------+");
-        System.out.println("+----------------------------------------------------+\n");
-
+        getBanner();
         startTime = System.nanoTime();
         car1.restart();
         car2.restart();
@@ -186,52 +184,30 @@ public class Controller {
     }
 
     @FXML
-    void startRace(ActionEvent event) {
+    void startRace(ActionEvent event) { //start
         if (!started) {
-            System.out.println("\n" + "+----------------------------------------------------+");
-            System.out.println("+-----------------R A N K I N G----------------------+");
-            System.out.println("+----------------------------------------------------+\n");
             started = true;
             startTime = System.nanoTime();
+            getBanner();
+            car1 = new Car(rec, "Fiat", 2005, 9, "1");
+            go(car1);
 
-            car1 = new Car(rec, "Mazda", 2018, 9, "1");
-            car1.play();
-            car1.getT().setOnFinished(e -> {
-                store.add(car1.getMake());
-                place();
-            });
+            car2 = new Car(rec1, "Mustang", 2008, 10, "2");
+            go(car2);
 
-            car2 = new Car(rec1, "BMW", 2020, 10, "2");
-            car2.play();
-            car2.getT().setOnFinished(e -> {
-                store.add(car2.getMake());
-                place();
-            });
+            car3 = new Car(rec2, "Ferrari", 2015, 18, "3");
+            go(car3);
 
-            car3 = new Car(rec2, "Toyota", 2010, 12, "3");
-            car3.play();
-            car3.getT().setOnFinished(e -> {
-                store.add(car3.getMake());
-                place();
-            });
+            car4 = new Car(rec3, "Lamborghini", 2018, 17, "4");
+            go(car4);
 
-            car4 = new Car(rec3, "Volvo", 2005, 8, "4");
-            car4.play();
-            car4.getT().setOnFinished(e -> {
-                store.add(car4.getMake());
-                place();
-            });
-            car5 = new Car(rec4, "Ferrari", 2020, 15, "5");
-            car5.play();
-            car5.getT().setOnFinished(e -> {
-                store.add(car5.getMake());
-                place();
-            });
+            car5 = new Car(rec4, "Tesla", 2020, 20, "5");
+            go(car5);
         }
     }
 
     @FXML
-    void speedUp(ActionEvent event) {
+    void speedUp(ActionEvent event) {//yo it speeds up
         if (!isPaused) {
             car1.speedUp();
             car2.speedUp();
@@ -242,7 +218,7 @@ public class Controller {
     }
 
     @FXML
-    void pause(ActionEvent actionEvent) {
+    void pause(ActionEvent actionEvent) {//pause
         if (!isPaused) {
             isPaused = true;
             car1.pause();
@@ -274,6 +250,21 @@ public class Controller {
     double calcTime() {
         return (System.nanoTime() - startTime - pausedTime) / 1_000_000_000;
     }
+
+    void getBanner(){
+        System.out.println("\n" + "+----------------------------------------------------+");
+        System.out.println("+-----------------R A N K I N G----------------------+");
+        System.out.println("+----------------------------------------------------+\n");
+    }
+
+    void go(Car car){
+        car.play();
+        car.getT().setOnFinished(e -> {
+            store.add(car.getMake());
+            place();
+        });
+    }
+
 
 
 }

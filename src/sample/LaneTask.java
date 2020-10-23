@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.scene.control.Label;
 
-//multithread race by lane, using javafx thread. does not work
+//multithread race by lane, does not work
 
 public class LaneTask extends Task {
 

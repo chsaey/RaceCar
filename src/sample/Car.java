@@ -4,7 +4,6 @@ import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import org.w3c.dom.css.Rect;
 
 import javafx.scene.shape.Rectangle;
 
@@ -30,7 +29,6 @@ public class Car {
         this.year = year;
         this.maxSpeed = maxSpeed;
         this.carNumber = carNumber;
-
     }
 
     public void play() {
@@ -42,15 +40,12 @@ public class Car {
     public void pause() {
         lane.togglePause();
         t.pause();
-
     }
 
     public void resume() {
         t.play();
         lane.togglePause();
-
     }
-
     public void restart() {
         lane.interrupt();
         t.setRate(1);
@@ -58,7 +53,6 @@ public class Car {
         lane = new Race(this);
         lane.start();
     }
-
     public Animation.Status getStatus() {
         return t.getStatus();
     }
@@ -76,17 +70,16 @@ public class Car {
             t.pause();
         }
         else if (t.getStatus() == Animation.Status.RUNNING)
-            t.setRate(t.getCurrentRate() - 1.0);
-    }
+            t.setRate(t.getCurrentRate() - 1.0);    }
 
 
     public void brake() {
         if(t.getStatus() == Animation.Status.RUNNING){
         if (year >= 2015)
-            t.setRate(Math.max(t.getCurrentRate() - 1, 1));
+            t.setRate(Math.max(t.getCurrentRate() - 1, .5));
         else if (year >= 2010)
-            t.setRate(Math.max(t.getCurrentRate() - .75, 1));
-        else t.setRate(Math.max(t.getCurrentRate() - .50, 1));
+            t.setRate(Math.max(t.getCurrentRate() - .75, .5));
+        else t.setRate(Math.max(t.getCurrentRate() - .50, .5));
         }
     }
 

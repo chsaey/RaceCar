@@ -37,12 +37,11 @@ class Race extends Thread implements Runnable {
                         car.brake();
                     }
                 }
-
             }
 
 
         } catch (Exception e) {
-            System.out.println("something broke");
+            System.out.println("lmao something broke");
 
         }
 
