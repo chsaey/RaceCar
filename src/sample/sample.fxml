@@ -35,6 +35,12 @@
                     <Rectangle fx:id="rec2" arcHeight="5.0" arcWidth="5.0" fill="#1fff49" height="37.0" layoutX="10.0" layoutY="117.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
                     <Rectangle fx:id="rec3" arcHeight="5.0" arcWidth="5.0" fill="#e8ff1f" height="38.0" layoutX="9.0" layoutY="167.0" stroke="BLACK" strokeType="INSIDE" width="43.0" />
                     <Rectangle fx:id="rec4" arcHeight="5.0" arcWidth="5.0" fill="#ff1fe1" height="37.0" layoutX="8.0" layoutY="225.0" stroke="BLACK" strokeType="INSIDE" width="45.0" />
+               <ImageView fitHeight="37.0" fitWidth="57.0" layoutX="2.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../racecar_images/tesla.jpg" />
+                  </image>
+               </ImageView>
+               <ImageView fitHeight="55.0" fitWidth="58.0" layoutX="2.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" />
                 </children></Pane>
         </StackPane>
     </center>
@@ -51,6 +57,11 @@
                         <Button fx:id="restart" layoutX="486.0" layoutY="48.0" mnemonicParsing="false" onAction="#restartRace" prefHeight="25.0" style="-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold; -fx-font-size: 1.1em; -fx-cursor: hand;" text="Restart" />
                     </buttons>
                 </ButtonBar>
+            <ButtonBar prefHeight="40.0" prefWidth="200.0">
+              <buttons>
+                <Button mnemonicParsing="false" text="Button" />
+              </buttons>
+            </ButtonBar>
             </children>
         </HBox>
     </bottom>
