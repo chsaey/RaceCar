@@ -1,17 +1,20 @@
 package sample;
 
-import javafx.animation.*;
+
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
-import java.awt.*;
+
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
+
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
+
 
 
 
@@ -54,6 +57,7 @@ public class Controller {
     boolean started = false;
     boolean isPaused = false;
 
+
     @FXML
     void restartRace(ActionEvent event) {
         store.removeAll(store);
@@ -81,12 +85,9 @@ public class Controller {
     }
 
     @FXML
-    void startRace(ActionEvent event) {
-
-        //Users/Dhruvil/Desktop/RaceCar/racecar_images
+    public void initialize() {
         Image image1 = new Image("/sample/racecar_images/fiat.png", false);
         rec.setFill(new ImagePattern(image1));
-
         Image image2 = new Image("/sample/racecar_images/mustang.png", false);
         rec1.setFill(new ImagePattern(image2));
 
@@ -99,6 +100,91 @@ public class Controller {
         Image image5 = new Image("/sample/racecar_images/tesla.jpg", false);
         rec4.setFill(new ImagePattern(image5));
 
+
+        start.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                start.setStyle("-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%), #9d4024, #d86e3a, radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);");
+            }
+        });
+        start.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                start.setStyle("-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold; -fx-font-size: 1.1em; -fx-cursor: hand;");
+            }
+        });
+
+        pause.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                pause.setStyle("-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%), #9d4024, #d86e3a, radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);");
+            }
+        });
+        pause.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                pause.setStyle("-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold; -fx-font-size: 1.1em; -fx-cursor: hand;");
+            }
+        });
+
+        resume.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                resume.setStyle("-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%), #9d4024, #d86e3a, radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);");
+            }
+        });
+        resume.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                resume.setStyle("-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold; -fx-font-size: 1.1em; -fx-cursor: hand;");
+            }
+        });
+
+        restart.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                restart.setStyle("-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%), #9d4024, #d86e3a, radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);");
+            }
+        });
+        restart.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                restart.setStyle("-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold; -fx-font-size: 1.1em; -fx-cursor: hand;");
+            }
+        });
+
+        speedUp.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                speedUp.setStyle("-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%), #9d4024, #d86e3a, radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);");
+            }
+        });
+        speedUp.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                speedUp.setStyle("-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold; -fx-font-size: 1.1em; -fx-cursor: hand;");
+            }
+        });
+
+        slowDown.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                slowDown.setStyle("-fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%), #9d4024, #d86e3a, radial-gradient(center 50% 50%, radius 100%, #ea7f4b, #c54e2c);");
+            }
+        });
+        slowDown.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                slowDown.setStyle("-fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0; -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #a34313 0%, #903b12 100%),        #9d4024,        #d86e3a,        radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c); -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 ); -fx-font-weight: bold; -fx-font-size: 1.1em; -fx-cursor: hand;");
+            }
+        });
+
+    }
+
+
+
+    @FXML
+    void startRace(ActionEvent event) {
 
         System.out.println("\n" +  "+----------------------------------------------------+");
         System.out.println("+-----------------R A N K I N G----------------------+");
